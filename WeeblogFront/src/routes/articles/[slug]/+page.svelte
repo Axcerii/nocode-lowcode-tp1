@@ -95,21 +95,24 @@
         style="max-width: 100%; height: auto; margin-bottom: 1rem;"
       />
     {/if}
-
-    <h1>{data.article.title}</h1>
-    <p><em>Publié le {formatDate(data.article.createdAt)}</em></p>
-
-    {#each data.article.content as block}
+    <div class="content">
+      <h1>{data.article.title}</h1>
+      <p class="date"><em>Publié le {formatDate(data.article.createdAt)}</em></p>
+      
+      {#each data.article.content as block}
       {#if block.type === 'paragraph'}
-        <p>
-          {#each block.children as child}
-            {child.text}
-          {/each}
-        </p>
+      <p>
+        {#each block.children as child}
+        {child.text}
+        {/each}
+      </p>
       {/if}
-    {/each}
+      {/each}
+    </div>
   </article>
 
+
+  <section class="comment-section">
   <section class="comments">
     <h2>Commentaires</h2>
     {#if data.comments.length > 0}
@@ -128,45 +131,133 @@
       <p>Aucun commentaire pour cet article.</p>
     {/if}
   </section>
+    <section class="add-comment">
+      <h2>Ajouter un commentaire</h2>
+      <form on:submit|preventDefault={handleSubmit}>
+        <div>
+          <label for="authorName">Nom :</label>
+          {#if $user?.username}
+            <input
+              id="authorName"
+              type="text"
+              bind:value={authorName}
+              required
+              readonly
+            />
+          {:else}
+            <input
+              id="authorName"
+              type="text"
+              bind:value={authorName}
+              required
+            />
+          {/if}
+        </div>
 
-  <section class="add-comment">
-    <h2>Ajouter un commentaire</h2>
-    <form on:submit|preventDefault={handleSubmit}>
-      <div>
-        <label for="authorName">Nom :</label>
-        {#if $user?.username}
-          <input
-            id="authorName"
-            type="text"
-            bind:value={authorName}
-            required
-            readonly
-          />
-        {:else}
-          <input
-            id="authorName"
-            type="text"
-            bind:value={authorName}
-            required
-          />
+        <div>
+          <label for="content">Commentaire :</label>
+          <textarea id="content" bind:value={content} required></textarea>
+        </div>
+
+        {#if error}
+          <p style="color:red">{error}</p>
         {/if}
-      </div>
+        {#if success}
+          <p style="color:green">{success}</p>
+        {/if}
 
-      <div>
-        <label for="content">Commentaire :</label>
-        <textarea id="content" bind:value={content} required></textarea>
-      </div>
-
-      {#if error}
-        <p style="color:red">{error}</p>
-      {/if}
-      {#if success}
-        <p style="color:green">{success}</p>
-      {/if}
-
-      <button type="submit">Publier</button>
-    </form>
+        <button type="submit">Publier</button>
+      </form>
+    </section>
   </section>
+
 {:else}
   <p>Article introuvable.</p>
 {/if}
+
+<style>
+  article{
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+    
+    img{
+      margin: auto;
+      width: 100%;
+      max-height: 25rem;
+      object-fit: cover;
+    }
+
+    .content{
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 2rem;
+      margin: auto;
+    }
+
+    h1{
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .date{
+      font-style: italic;
+    }
+  }
+
+  .comment-section{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    gap: 2rem;
+  }
+
+  .add-comment{
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 1rem;
+
+      & > div{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+      }
+      input, textarea{
+        width: 50%;
+        padding: 0.5rem;
+        background-color: var(--main);
+        border: black solid 1px;
+      }
+    }
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: solid 1px var(--second);
+    border-radius: 2px;
+    padding: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    article{
+      width: 100%;
+      .content{
+        width: 100%;
+        padding: 0;
+      }
+    }
+
+    .comment-section{
+      width: 100%;
+
+      input, textarea{
+        width: 100%;
+      }
+    }
+  }
+</style>
