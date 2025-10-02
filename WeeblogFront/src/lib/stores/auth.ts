@@ -9,3 +9,4 @@ if (typeof localStorage !== 'undefined') {
     token.set(saved);
   }
 }
+

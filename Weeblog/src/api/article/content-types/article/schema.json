@@ -36,11 +36,10 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "articles"
     },
-    "comments": {
+    "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::comment.comment",
-      "mappedBy": "article"
+      "target": "api::article.article"
     }
   }
 }

@@ -21,9 +21,8 @@
     },
     "article": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::article.article",
-      "inversedBy": "comments"
+      "relation": "oneToOne",
+      "target": "api::article.article"
     }
   }
 }
