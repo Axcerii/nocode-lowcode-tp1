@@ -46,3 +46,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+}

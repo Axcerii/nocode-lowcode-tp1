@@ -16,7 +16,7 @@
 </svelte:head>
 
 <header>
-  <div class="logo">📝 Weeblog</div>
+  <a href="/" class="logo">Weeblog</a>
   <nav data-sveltekit-reload>
     <a href="/">Articles</a>
 	{#if $token}
@@ -44,7 +44,7 @@
   header {
     background-color: var(--main);
     color: black;
-    padding: 1rem;
+    padding: 2rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,6 +55,8 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    padding: 0 0.5rem;
   }
 
   nav a:hover {
@@ -71,5 +73,10 @@
     color: black;
     text-align: center;
     padding: 0.5rem;
+  }
+
+  .logo{
+    font-weight: bold;
+    text-transform: uppercase;
   }
 </style>
