@@ -23,7 +23,7 @@
     transition: transform 0.2s;
   }
   .card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-8px) scale(1.01);
   }
 
   .card img {
@@ -40,7 +40,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: var(--main);
+    color: var(--second);
   }
 
   .card-date {

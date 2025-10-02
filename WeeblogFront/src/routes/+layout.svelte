@@ -37,9 +37,6 @@
 
 
 <style>
-  :root {
-    --main: #ffc6fa; /* tu peux changer cette valeur selon ton besoin */
-  }
 
   header {
     background-color: var(--main);
@@ -78,5 +75,16 @@
   .logo{
     font-weight: bold;
     text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    header{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo{
+      margin-bottom: 2rem;
+    }
   }
 </style>

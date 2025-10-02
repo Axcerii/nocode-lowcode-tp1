@@ -18,9 +18,14 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
   }
+
+  h1{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 </style>
 
-<h1>Bienvenue sur Mon Vlog</h1>
+<h1> Articles disponibles :</h1>
 
 {#if data.articles.length > 0}
   <div class="grid">
