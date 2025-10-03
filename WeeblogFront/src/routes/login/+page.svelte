@@ -55,3 +55,40 @@
 
   <button type="submit">Se connecter</button>
 </form>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &>div{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  label{
+    font-weight: bold;
+  }
+
+  input{
+    padding: 0.5rem;
+    border: 1px solid var(--second);
+    background: var(--main);
+    border-radius: 4px;
+    max-width: 80%;
+  }
+
+  h1{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  button{
+    width: 10rem;
+    max-width: 80%;
+  }
+</style>

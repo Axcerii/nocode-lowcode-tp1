@@ -48,7 +48,6 @@
   }
 
   nav a {
-    margin-left: 1rem;
     text-decoration: none;
     color: black;
     font-weight: bold;
